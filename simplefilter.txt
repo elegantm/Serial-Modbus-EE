@@ -1,0 +1,18 @@
+%滤波前数据
+t = 0:0.01:10;
+f=5*sin(2*pi*20*t)+5*sin(2*pi*60*t);
+%滤波器设计
+Fpass = 1;    % Passband Frequency
+Fstop = 50;   % Stopband Frequency
+Apass = 1;    % Passband Ripple (dB)
+Astop = 60;   % Stopband Attenuation (dB)
+Fs    = 2000;  % Sampling Frequency
+h = fdesign.lowpass('fp,fst,ap,ast', Fpass, Fstop, Apass, Astop, Fs);
+Hd = design(h, 'equiripple', ...
+    'MinOrder', 'any', ...
+    'StopbandShape', 'flat');
+
+%f2滤波后的数据
+f2 = filter(Hd,f);
+%对比图
+plot(t,f,'b',t,f2,'r');
