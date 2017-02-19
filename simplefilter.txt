@@ -1,7 +1,8 @@
-%ÂË²¨Ç°Êı¾İ
+matlab file
+%æ»¤æ³¢å‰æ•°æ®
 t = 0:0.01:10;
 f=5*sin(2*pi*20*t)+5*sin(2*pi*60*t);
-%ÂË²¨Æ÷Éè¼Æ
+%æ»¤æ³¢å™¨è®¾è®¡
 Fpass = 1;    % Passband Frequency
 Fstop = 50;   % Stopband Frequency
 Apass = 1;    % Passband Ripple (dB)
@@ -12,7 +13,8 @@ Hd = design(h, 'equiripple', ...
     'MinOrder', 'any', ...
     'StopbandShape', 'flat');
 
-%f2ÂË²¨ºóµÄÊı¾İ
+%f2æ»¤æ³¢åçš„æ•°æ®
 f2 = filter(Hd,f);
-%¶Ô±ÈÍ¼
+%å¯¹æ¯”å›¾
 plot(t,f,'b',t,f2,'r');
+%%%%%%add new one
